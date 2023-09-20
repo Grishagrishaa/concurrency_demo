@@ -1,16 +1,14 @@
-package ru.clevertec.approaches;
+package ru.clevertec.approaches.classic;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import ru.clevertec.approaches.classic.util.RandomUtil;
+import ru.clevertec.approaches.util.RandomUtil;
 
 import java.util.Queue;
 
-/**
- * @author Grisha Mitskevich on 20.09.23.
- */
+
 @RequiredArgsConstructor
-public class Producer implements Runnable{
+public class ProducerThread implements Runnable{
 
     private final Queue<Integer> buffer;
     private final int delay;
@@ -21,8 +19,13 @@ public class Producer implements Runnable{
     public void run() {
         synchronized (buffer){
             while (true){
-                buffer.add(RandomUtil.getRandom());
-                buffer.wait(delay);
+                int produced = RandomUtil.getRandom();
+
+                System.out.println("PRODUCED " + produced + ". SIZE = " + buffer.size());
+                buffer.add(produced);
+
+                System.out.println("PRODUCER WAITS - " + delay);
+                buffer.wait(1000 / delay);
             }
         }
     }

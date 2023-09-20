@@ -1,4 +1,4 @@
-package ru.clevertec.approaches.classic.util;
+package ru.clevertec.approaches.util;
 
 import lombok.experimental.UtilityClass;
 
