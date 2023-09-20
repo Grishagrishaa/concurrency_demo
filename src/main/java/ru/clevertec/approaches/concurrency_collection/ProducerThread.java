@@ -23,7 +23,7 @@ public class ProducerThread implements Runnable{
             System.out.println("PRODUCED " + produced + ". SIZE = " + buffer.size());
             buffer.put(produced);
 
-            System.out.println("PRODUCER WAITS - " + delay);
+            System.out.println("PRODUCER WAITS - " + 1000 / delay);
             Thread.sleep(1000 / delay);
         }
     }

@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class ConcurrencyCollectionRunner {
 
-    private static final int CONSUMER_DELAY = 500;
+    private static final int CONSUMER_DELAY = 1000;
     private static final int PRODUCER_RATE = 2;
 
     private final BlockingQueue<Integer> buffer = new LinkedBlockingQueue<>();
@@ -20,11 +20,11 @@ public class ConcurrencyCollectionRunner {
     public void run() {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
-        IntStream.range(0, 2)
+        IntStream.range(0, 1)
                 .mapToObj(i -> new ConsumerThread(buffer, CONSUMER_DELAY))
                 .forEach(executorService::submit);
 
-        IntStream.range(0, 2)
+        IntStream.range(0, 1)
                 .mapToObj(i -> new ProducerThread(buffer, PRODUCER_RATE))
                 .forEach(executorService::submit);
 

@@ -13,8 +13,8 @@ import java.util.stream.IntStream;
 
 public class LockRunner {
 
-    private static final int CONSUMER_DELAY = 500;
-    private static final int PRODUCER_RATE = 1;
+    private static final int CONSUMER_DELAY = 1000;
+    private static final int PRODUCER_RATE = 2;
     private static final Lock lock = new ReentrantLock();
 
     private final BlockingQueue<Integer> buffer = new LinkedBlockingQueue<>();
